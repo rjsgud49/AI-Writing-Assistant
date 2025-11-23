@@ -186,18 +186,27 @@ const Write: React.FC = () => {
             setFeedbacks((prev) => [placeholder, ...prev]);
 
             const prompt = `
-당신은 매우 엄격하고 냉정한 글쓰기 평가자입니다.
-문법, 논리, 구조, 표현력 측면에서 냉정하게 평가하세요.
+당신은 짧고 명확한 피드백만 제공하는 글쓰기 평가자입니다.
 
-사용자 글:
+ 피드백 규칙
+- 문장 단위로 딱 1~2줄만 피드백하세요.
+- 길게 설명하거나 장황한 분석은 절대 하지 마세요.
+- 필요 없는 서론/총평 금지.
+- 글 전체 흐름이 이상하다면, "문제가 있는 문장 위치 + 간단한 이유 1줄"만 말하세요.
+- 반드시 간결함을 유지하세요.
+
+ 사용자 글:
 """${content}"""
 
-피드백 유형: ${feedbackType}
+선택된 피드백 유형: ${feedbackType}
 
-- 고칠 부분: (문장 일부 그대로 인용)
-- 피드백: (무엇이 잘못됐는지 냉정히 지적)
-- 수정 제안: (전문가 수준으로 수정, 이유 포함)
+아래 형식으로만 답해주세요:
+
+- 고칠 부분: (짧게 인용 — 20자 이내)
+- 피드백: (문제가 무엇인지 한 문장으로)
+- 수정 제안: (짧고 명확한 한 문장 제안)
 `;
+
 
             const result = await getAIResponse(prompt);
             const parsed = result?.trim() || "";
@@ -345,7 +354,7 @@ const Write: React.FC = () => {
                                 <button
                                     key={type}
                                     onClick={() =>
-                                        setFeedbackType((prev) => (prev === type ? "" : (type as any)))
+                                        setFeedbackType((prev) => (prev === type ? "" : (type as "개선" | "톤" | "강조")))
                                     }
                                     className={`w-1/3 py-1 rounded-md font-semibold transition ${feedbackType === type
                                             ? "bg-purple-500 text-white"
