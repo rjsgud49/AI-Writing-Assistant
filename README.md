@@ -1,73 +1,122 @@
-# React + TypeScript + Vite
+AI 문서작성 도구 (AI Writing Assistant)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AI 기반 문서 작성 기능을 통해 글쓰기 효율을 높이는 텍스트 생산성 웹 서비스입니다.
+자기소개서, 포트폴리오, 보고서 등 다양한 문서를 빠르고 정확하게 작성할 수 있도록 지원합니다.
 
-Currently, two official plugins are available:
+1. 프로젝트 소개
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+AI 문서작성 도구는 다음 기능을 중심으로 구성된 문서 작성 플랫폼입니다.
 
-## React Compiler
+문서 초안 작성 및 텍스트 분석
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+직무별 맞춤 템플릿 자동 생성
 
-## Expanding the ESLint configuration
+PDF, Markdown, HTML 등 다양한 형식으로 문서 출력
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+임시 저장을 통한 버전 관리 지원
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+문서 작성 과정에서 사용자 편의성과 생산성을 높이는 것을 목표로 합니다.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+2. 개발 목적
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+문서 작성의 반복적인 작업을 자동화하여 시간 절약
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+AI를 활용한 교정 및 피드백으로 문서 품질 향상
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+직무별 템플릿 제공을 통해 형식 불일치, 누락 등의 문제 최소화
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+간단한 UI/UX로 누구나 쉽게 접근 가능한 환경 제공
+
+3. 개발 환경
+
+Frontend: Vite, React, TypeScript
+
+Styling: TailwindCSS
+
+Editor/IDE: Visual Studio Code
+
+AI API: OpenAI API
+
+4. 주요 기능
+4.1 작성 에디터
+
+제목 입력 기능
+
+문서 본문 입력 및 글자 수 표시
+
+임시 저장, 초기화, 클립보드 복사 기능
+
+AI 피드백 기능(개선, 톤 변화, 전문성 강화)
+
+저장된 초안 목록 관리
+
+4.2 직무별 템플릿 제공
+
+키워드 검색 기능
+
+직무별 카테고리 필터 제공
+
+템플릿 카드 리스트(제목, 요약, 태그)
+
+템플릿 저장 및 편집 기능
+
+4.3 출력 기능
+
+저장된 초안 목록에서 선택 후 편집
+
+제목/파일명 입력
+
+PDF, Markdown(.md), HTML(.html), Text(.txt) 형식으로 문서 출력
+
+5. 화면 구성 (Layout)
+5.1 작성 에디터 페이지
+
+상단: 페이지 제목, 간단 설명
+
+좌측: 제목 입력 필드, 텍스트 입력 박스, 글자 수 표시, 작업 버튼
+
+우측: 피드백 옵션 선택, AI 피드백 결과, 임시 저장 목록
+
+5.2 직무별 템플릿 페이지
+
+상단: 페이지 제목, 설명
+
+탭: 작성 에디터로 이동, 출력 페이지로 이동
+
+검색창 및 직무 필터
+
+템플릿 목록(격자 형태), 저장 및 편집 기능
+
+5.3 출력 페이지
+
+좌측: 임시 저장 목록 및 검색
+
+중앙: 제목 입력, 파일명 입력, 미리보기 영역, 출력 버튼
+
+6. 개발 프로세스
+
+아이디어 기획 및 요구사항 분석
+
+페이지 레이아웃 및 UI 구성 설계
+
+컴포넌트 구조 설계 (React 기반)
+
+AI 피드백 API 연동
+
+템플릿 생성 기능 구현
+
+임시 저장 및 버전 관리 구현
+
+출력 형식 변환 기능(PDF/MD/HTML/TXT) 개발
+
+전체 UI/UX 개선 및 오류 수정
+
+7. 기대효과
+
+템플릿 기반 문서 생성으로 누락·오류·형식 불일치 최소화
+
+보고서, 발표문, 자기소개서 등 반복 문서 작성 시간 단축
+
+자동 저장과 버전 관리 기능으로 문서의 이력 관리 가능
+
+문서 품질 향상 및 작업 효율 극대화
